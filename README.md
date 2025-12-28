@@ -77,13 +77,13 @@ python src/audit/explainability.py
 python src/audit/counterfactual.py
 ```
 
-Baseline Version
+## Baseline Version
 
 The frozen experimental baseline is tagged as: 
 
 baseline-hmda-2024
 
-Disclaimer
+## Disclaimer
 
 This project is for research and educational purposes only.
 It does not constitute legal advice or a production-ready lending system.
