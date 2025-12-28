@@ -14,8 +14,14 @@ This project answers:
 > *Can a model be formally “race-neutral” while still reproducing structural inequities?*
 
 ---
+This audit operationalizes that question using formal fairness metrics, counterfactual analysis, and governance review.
+
 
 ## Pipeline Overview
+
+![System Overview](reports/system_overview.png)
+*Figure 1: End-to-end algorithmic audit pipeline for HMDA loan approval decisions.*
+
 
 1. **Data Ingestion & Preprocessing**
    - Deterministic filtering and normalization of HMDA records
@@ -25,7 +31,8 @@ This project answers:
 2. **Baseline Predictive Model**
    - Binary loan approval classifier
    - AUC ≈ 0.79 on held-out data
-   - Model frozen and versioned via Git tag
+   - Model frozen and versioned via Git tag (`baseline-hmda-2024`)
+
 
 3. **Fairness Diagnostics**
    - Base rate analysis by protected class
@@ -50,7 +57,7 @@ This project answers:
 
 ## Key Findings
 
-- The model is **counterfactually fair** with respect to race.
+- The model satisfies counterfactual fairness tests with respect to race under controlled attribute substitution.
 - Despite this, approval rates vary significantly across racial groups.
 - Disparities emerge through **correlated financial variables**, not explicit protected attributes.
 - This demonstrates how “neutral” models can reproduce structural inequality.
@@ -59,6 +66,8 @@ This project answers:
 
 ## Reproducibility
 
+The following scripts reproduce the full audit pipeline from raw data preprocessing to fairness evaluation:
+
 ```bash
 python src/data/preprocess.py
 python src/diagnostics/base_rates.py
@@ -66,6 +75,7 @@ python src/model/train_model.py
 python src/audit/fairness.py
 python src/audit/explainability.py
 python src/audit/counterfactual.py
+```
 
 Baseline Version
 
