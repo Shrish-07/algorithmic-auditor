@@ -1,0 +1,11 @@
+numpy
+pandas
+scikit-learn
+matplotlib
+seaborn
+shap
+torch
+torchvision
+streamlit
+fastapi
+uvicorn
